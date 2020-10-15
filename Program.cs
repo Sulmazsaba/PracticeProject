@@ -1,6 +1,8 @@
 ﻿using System;
 using PracticeProject.DesignPatterns.CreationalPatterns.Builder;
 using PracticeProject.DesignPatterns.CreationalPatterns.FactoryMethod;
+using PracticeProject.DesignPatterns.CreationalPatterns.Prototype;
+using PracticeProject.DesignPatterns.CreationalPatterns.Singleton;
 
 namespace PracticeProject
 { 
@@ -159,10 +161,28 @@ namespace PracticeProject
 
             #region Prototype Pattern
 
-            
+            //Employee employee1=new Employee();
+            //employee1.FirstName = "Sulmaz";
+            //employee1.LastName = "saba";
+            //employee1.Department = "IT";
+            //employee1.Address=new Address()
+            //{
+            //    StreetName = "Shariati"
+            //};
+
+            //Employee employee2 = (Employee) employee1.Clone();
+            //employee2.Address.StreetName = "Navab";
 
             #endregion
-        }
+
+            #region Singleton
+
+            MySingleton singleton1 = MySingleton.Instance();
+            MySingleton singleton2=MySingleton.Instance();
+            if(singleton2!=singleton1)
+                Console.WriteLine("two instances are different");
+            #endregion
+            }
 
     }
 }

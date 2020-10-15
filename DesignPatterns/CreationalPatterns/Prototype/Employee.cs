@@ -5,16 +5,16 @@ using System.Text;
 
 namespace PracticeProject.DesignPatterns.CreationalPatterns.Prototype
 {
-   public class Employee
+   public class Employee :ICloneable
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Department { get; set; }
         public Address Address  { get; set; }
-    }
 
-   public class Address     
-   {
-       public string StreetName { get; set; }
-   }
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+    }
 }
