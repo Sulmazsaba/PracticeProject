@@ -15,7 +15,8 @@ namespace PracticeProject.DesignPatterns.CreationalPatterns.Builder
 
        public void Construct()
        {
-           CarBuilder.GetResult();
+           CarBuilder.Color = "Purple";
+           CarBuilder.NumDoors = 2;
        }
    }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using PracticeProject.DesignPatterns.CreationalPatterns.Builder;
 using PracticeProject.DesignPatterns.CreationalPatterns.FactoryMethod;
 
 namespace PracticeProject
@@ -85,14 +86,8 @@ namespace PracticeProject
 
             #endregion
 
-            #region factory method
-            ProductFactory phoneFactory=new PhoneFactory();
-            IProduct phone = phoneFactory.GetFactory();
-
-            ProductFactory tabletFactory=new TabletFactory();
-            IProduct tablet = tabletFactory.GetFactory();
-            #endregion
-
+           
+            ExecuteCreationalPatterns();
         }
             public static void fizzBuzz(int n)
             {
@@ -142,6 +137,32 @@ namespace PracticeProject
             {
                 return string.IsNullOrEmpty(pm);
             }
+
+            public static void ExecuteCreationalPatterns()
+            {
+            #region factory method
+            //ProductFactory phoneFactory=new PhoneFactory();
+            //IProduct phone = phoneFactory.GetFactory();
+
+            //ProductFactory tabletFactory=new TabletFactory();
+            //IProduct tablet = tabletFactory.GetFactory();
+            #endregion
+
+            #region BuilderMethod
+            //ICarBuilder builder = new HondaBuilder();
+            //CarBuilderDirector director = new CarBuilderDirector(builder);
+            //director.Construct();
+
+            //var car = builder.GetResult();
+
+            #endregion
+
+            #region Prototype Pattern
+
+            
+
+            #endregion
+        }
 
     }
 }

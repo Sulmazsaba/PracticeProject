@@ -6,6 +6,8 @@ namespace PracticeProject.DesignPatterns.CreationalPatterns.Builder
 {
    public interface ICarBuilder
    {
+        string Color { get; set; }
+        int NumDoors { get; set; }
        Car GetResult();
    }
 }
