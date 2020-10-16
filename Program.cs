@@ -1,4 +1,5 @@
 ﻿using System;
+using PracticeProject.DesignPatterns.Behavioral.Observer;
 using PracticeProject.DesignPatterns.CreationalPatterns.Builder;
 using PracticeProject.DesignPatterns.CreationalPatterns.FactoryMethod;
 using PracticeProject.DesignPatterns.CreationalPatterns.Prototype;
@@ -92,7 +93,7 @@ namespace PracticeProject
             #endregion
 
            
-            ExecuteStructuralPatterns();
+            ExecuteBehavioralPatterns();
         }
             public static void fizzBuzz(int n)
             {
@@ -230,6 +231,24 @@ namespace PracticeProject
 
             #endregion
 
+        }
+
+            public static void ExecuteBehavioralPatterns()
+            {
+                #region Observer
+
+                BlogReader sam=new BlogReader("sam");
+                BlogReader kian=new BlogReader("kian");
+
+                BlogWriter writer=new BlogWriter();
+            writer.AddReader(sam);
+            writer.AddReader(kian);
+
+            writer.Notify("salam bacheha biayn berim birun");
+
+            Console.WriteLine(Environment.NewLine);
+            writer.Notify("nemiayn??");
+                #endregion
         }
 
     }
