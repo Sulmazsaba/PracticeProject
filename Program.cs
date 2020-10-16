@@ -3,6 +3,8 @@ using PracticeProject.DesignPatterns.CreationalPatterns.Builder;
 using PracticeProject.DesignPatterns.CreationalPatterns.FactoryMethod;
 using PracticeProject.DesignPatterns.CreationalPatterns.Prototype;
 using PracticeProject.DesignPatterns.CreationalPatterns.Singleton;
+using PracticeProject.DesignPatterns.Structural.Adapter;
+using PracticeProject.DesignPatterns.Structural.Composite;
 
 namespace PracticeProject
 { 
@@ -89,7 +91,7 @@ namespace PracticeProject
             #endregion
 
            
-            ExecuteCreationalPatterns();
+            ExecuteStructuralPatterns();
         }
             public static void fizzBuzz(int n)
             {
@@ -177,12 +179,46 @@ namespace PracticeProject
 
             #region Singleton
 
-            MySingleton singleton1 = MySingleton.Instance();
-            MySingleton singleton2=MySingleton.Instance();
-            if(singleton2!=singleton1)
-                Console.WriteLine("two instances are different");
+            //MySingleton singleton1 = MySingleton.Instance();
+            //MySingleton singleton2=MySingleton.Instance();
+            //if(singleton2!=singleton1)
+            //    Console.WriteLine("two instances are different");
             #endregion
             }
+
+            public static void ExecuteStructuralPatterns()
+            {
+                #region Adapter
+
+            //ITarget target=new EmployeeAdapter();
+            //    foreach (var employee in target.GetEmployees())
+            //    {
+            //        Console.WriteLine(employee);
+            //    }
+
+
+            #endregion
+
+            #region Composite Pattern
+                Latte latte=new Latte(200);
+                latte.Flavors.Add(new CinnamonLatte(300));
+                latte.Flavors.Add(new VanillaLatte(250));
+
+                Espresso espresso=new Espresso(500);
+
+                Cappuccino cappuccino=new Cappuccino(400);
+                cappuccino.Flavors.Add(new CaramelCappuccino(430));
+                cappuccino.Flavors.Add(new PeppermintCappuccino(390));
+
+                HotCoffee hotCoffee=new HotCoffee(460);
+                hotCoffee.Flavors.Add(latte);
+                hotCoffee.Flavors.Add(espresso);
+                hotCoffee.Flavors.Add(cappuccino);
+
+                hotCoffee.DisplayCalories();
+                #endregion
+
+        }
 
     }
 }
