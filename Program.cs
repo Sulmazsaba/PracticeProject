@@ -5,6 +5,7 @@ using PracticeProject.DesignPatterns.CreationalPatterns.Prototype;
 using PracticeProject.DesignPatterns.CreationalPatterns.Singleton;
 using PracticeProject.DesignPatterns.Structural.Adapter;
 using PracticeProject.DesignPatterns.Structural.Composite;
+using PracticeProject.DesignPatterns.Structural.Decorator;
 
 namespace PracticeProject
 { 
@@ -188,7 +189,7 @@ namespace PracticeProject
 
             public static void ExecuteStructuralPatterns()
             {
-                #region Adapter
+            #region Adapter
 
             //ITarget target=new EmployeeAdapter();
             //    foreach (var employee in target.GetEmployees())
@@ -200,23 +201,34 @@ namespace PracticeProject
             #endregion
 
             #region Composite Pattern
-                Latte latte=new Latte(200);
-                latte.Flavors.Add(new CinnamonLatte(300));
-                latte.Flavors.Add(new VanillaLatte(250));
 
-                Espresso espresso=new Espresso(500);
+            //Latte latte=new Latte(200);
+            //latte.Flavors.Add(new CinnamonLatte(300));
+            //latte.Flavors.Add(new VanillaLatte(250));
 
-                Cappuccino cappuccino=new Cappuccino(400);
-                cappuccino.Flavors.Add(new CaramelCappuccino(430));
-                cappuccino.Flavors.Add(new PeppermintCappuccino(390));
+            //Espresso espresso=new Espresso(500);
 
-                HotCoffee hotCoffee=new HotCoffee(460);
-                hotCoffee.Flavors.Add(latte);
-                hotCoffee.Flavors.Add(espresso);
-                hotCoffee.Flavors.Add(cappuccino);
+            //Cappuccino cappuccino=new Cappuccino(400);
+            //cappuccino.Flavors.Add(new CaramelCappuccino(430));
+            //cappuccino.Flavors.Add(new PeppermintCappuccino(390));
 
-                hotCoffee.DisplayCalories();
-                #endregion
+            //HotCoffee hotCoffee=new HotCoffee(460);
+            //hotCoffee.Flavors.Add(latte);
+            //hotCoffee.Flavors.Add(espresso);
+            //hotCoffee.Flavors.Add(cappuccino);
+
+            //hotCoffee.DisplayCalories();
+            #endregion
+
+            #region Decorator
+            Pizza pepperoni=new Pepperoni();
+            Console.WriteLine(pepperoni.GetDescription() + " Cost: " + pepperoni.GetCost());
+            
+            pepperoni=new Onion(pepperoni);
+            pepperoni=new Cheese(pepperoni);
+            Console.WriteLine(pepperoni.GetDescription() + " Cost: " + pepperoni.GetCost());
+
+            #endregion
 
         }
 
