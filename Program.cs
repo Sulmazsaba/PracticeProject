@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json.Serialization;
 using PracticeProject.DesignPatterns.Behavioral.Observer;
+using PracticeProject.DesignPatterns.Behavioral.Strategy;
 using PracticeProject.DesignPatterns.CreationalPatterns.Builder;
 using PracticeProject.DesignPatterns.CreationalPatterns.FactoryMethod;
 using PracticeProject.DesignPatterns.CreationalPatterns.Prototype;
@@ -92,8 +97,12 @@ namespace PracticeProject
 
             #endregion
 
-           
-            ExecuteBehavioralPatterns();
+
+            //ExecuteBehavioralPatterns();
+
+            //groupBy
+            ExecuteLinqOperators();
+
         }
             public static void fizzBuzz(int n)
             {
@@ -235,21 +244,38 @@ namespace PracticeProject
 
             public static void ExecuteBehavioralPatterns()
             {
-                #region Observer
+            #region Observer
 
-                BlogReader sam=new BlogReader("sam");
-                BlogReader kian=new BlogReader("kian");
+            //BlogReader sam = new BlogReader("sam");
+            //BlogReader kian = new BlogReader("kian");
 
-                BlogWriter writer=new BlogWriter();
-            writer.AddReader(sam);
-            writer.AddReader(kian);
+            //BlogWriter writer = new BlogWriter();
+            //writer.AddReader(sam);
+            //writer.AddReader(kian);
 
-            writer.Notify("salam bacheha biayn berim birun");
+            //writer.Notify("salam bacheha biayn berim birun");
 
-            Console.WriteLine(Environment.NewLine);
-            writer.Notify("nemiayn??");
-                #endregion
-        }
+            //Console.WriteLine(Environment.NewLine);
+            //writer.Notify("nemiayn??");
+
+            #endregion
+
+            #region Strategy
+
+            Dictionary<string,IMathOperator> strategies=new Dictionary<string, IMathOperator>();
+            strategies.Add("+",new MathAdd());
+            //strategies.Add("-",new);
+
+            IMathOperator strategy= strategies["+"];
+           var result= strategy.Operation(2, 7);
+            Console.WriteLine(result);
+            #endregion
+            }
+
+            public static void ExecuteLinqOperators()
+            {
+               LinqOperators.GroupJoin();
+            }
 
     }
 }
