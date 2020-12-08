@@ -12,5 +12,10 @@ namespace PracticeProject.DesignPatterns.Structural.Momento
        {
            this.content = content;
        }
+
+       public string GetContent()
+       {
+           return content;
+       }
    }
 }

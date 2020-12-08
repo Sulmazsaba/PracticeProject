@@ -7,12 +7,14 @@ using PracticeProject.DesignPatterns.Behavioral.Observer;
 using PracticeProject.DesignPatterns.Behavioral.Strategy;
 using PracticeProject.DesignPatterns.CreationalPatterns.Abstract;
 using PracticeProject.DesignPatterns.CreationalPatterns.Builder;
+using PracticeProject.DesignPatterns.CreationalPatterns.Builder2;
 using PracticeProject.DesignPatterns.CreationalPatterns.FactoryMethod;
 using PracticeProject.DesignPatterns.CreationalPatterns.Prototype;
 using PracticeProject.DesignPatterns.CreationalPatterns.Singleton;
 using PracticeProject.DesignPatterns.Structural.Adapter;
 using PracticeProject.DesignPatterns.Structural.Composite;
 using PracticeProject.DesignPatterns.Structural.Decorator;
+using PracticeProject.DesignPatterns.Structural.Momento;
 
 namespace PracticeProject
 { 
@@ -101,12 +103,12 @@ namespace PracticeProject
             #endregion
 
 
-            //ExecuteBehavioralPatterns();
+            ExecuteBehavioralPatterns();
 
             //ExecuteLinqOperators();
 
-            CallAbstractFactory(new ConcreteFactory1());
-            CallAbstractFactory(new ConcreteFactory2());
+           // CallAbstractFactory(new ConcreteFactory1());
+           // CallAbstractFactory(new ConcreteFactory2());
 
         }
             public static void fizzBuzz(int n)
@@ -201,7 +203,20 @@ namespace PracticeProject
             //    Console.WriteLine("two instances are different");
             #endregion
 
+            #region Abstract
 
+            
+            var builder=new ConcreteBuilder();
+            Director director=new Director();
+            director.Builder = builder;
+
+            director.buildMaximumFeature();
+            Console.WriteLine(builder.GetProduct().ListParts());
+
+            director.buildMinimalFeature();
+            Console.WriteLine(builder.GetProduct().ListParts());
+
+            #endregion
         }
 
             public static void CallAbstractFactory(IAbstractFactory abstractFactory)
@@ -286,6 +301,23 @@ namespace PracticeProject
             IMathOperator strategy= strategies["+"];
            var result= strategy.Operation(2, 7);
             Console.WriteLine(result);
+            #endregion
+
+            #region Momento
+            Editor editor=new Editor();
+            EditorHistory history=new EditorHistory();
+
+            editor.Content = "a";
+            history.Push(editor.CreateState());
+
+            editor.Content = "b";
+            history.Push(editor.CreateState());
+
+            editor.Content = "c";
+            editor.RestoreState(history.Pop());
+
+            Console.WriteLine(editor.Content);
+
             #endregion
             }
 
