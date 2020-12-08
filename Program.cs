@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using PracticeProject.DesignPatterns.Behavioral.Observer;
 using PracticeProject.DesignPatterns.Behavioral.Strategy;
+using PracticeProject.DesignPatterns.CreationalPatterns.Abstract;
 using PracticeProject.DesignPatterns.CreationalPatterns.Builder;
 using PracticeProject.DesignPatterns.CreationalPatterns.FactoryMethod;
 using PracticeProject.DesignPatterns.CreationalPatterns.Prototype;
@@ -18,6 +19,8 @@ namespace PracticeProject
     public delegate void MyDelegate(string pm);
     class Program
     {
+        private static DateTime nwDateTime;
+        private IAbstractFactory _abstractFactory;
             static void Main(string[] args)
         {
             #region Indexers
@@ -100,8 +103,10 @@ namespace PracticeProject
 
             //ExecuteBehavioralPatterns();
 
-            //groupBy
-            ExecuteLinqOperators();
+            //ExecuteLinqOperators();
+
+            CallAbstractFactory(new ConcreteFactory1());
+            CallAbstractFactory(new ConcreteFactory2());
 
         }
             public static void fizzBuzz(int n)
@@ -195,6 +200,18 @@ namespace PracticeProject
             //if(singleton2!=singleton1)
             //    Console.WriteLine("two instances are different");
             #endregion
+
+
+        }
+
+            public static void CallAbstractFactory(IAbstractFactory abstractFactory)
+            {
+                var productA = abstractFactory.CreateProductA();
+               Console.WriteLine(productA.UsefulFunctionA());
+               var productB = abstractFactory.CreateProductB();
+               Console.WriteLine(productB.UsefulFunctionB());
+               Console.WriteLine(productB.AnotherUsefulFunctionB(productA));
+
             }
 
             public static void ExecuteStructuralPatterns()
