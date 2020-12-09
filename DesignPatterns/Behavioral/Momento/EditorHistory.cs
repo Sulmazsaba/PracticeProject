@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace PracticeProject.DesignPatterns.Structural.Momento
+namespace PracticeProject.DesignPatterns.Behavioral.Momento
 {
    public class EditorHistory
    {

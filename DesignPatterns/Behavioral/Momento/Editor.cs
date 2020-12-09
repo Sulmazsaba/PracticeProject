@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PracticeProject.DesignPatterns.Structural.Momento
+﻿namespace PracticeProject.DesignPatterns.Behavioral.Momento
 {
    public class Editor
    {
@@ -18,15 +14,6 @@ namespace PracticeProject.DesignPatterns.Structural.Momento
            Content = state.GetContent();
        }
 
-       //public string GetContent()
-       //{
-       //    return Content;
-       //}
-
-       //public void SetContent()
-       //{
-            
-       //}
        
    }
 }

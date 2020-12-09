@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
+using PracticeProject.DesignPatterns.Behavioral.Momento;
 using PracticeProject.DesignPatterns.Behavioral.Observer;
+using PracticeProject.DesignPatterns.Behavioral.State2;
 using PracticeProject.DesignPatterns.Behavioral.Strategy;
 using PracticeProject.DesignPatterns.CreationalPatterns.Abstract;
 using PracticeProject.DesignPatterns.CreationalPatterns.Builder;
@@ -14,7 +16,6 @@ using PracticeProject.DesignPatterns.CreationalPatterns.Singleton;
 using PracticeProject.DesignPatterns.Structural.Adapter;
 using PracticeProject.DesignPatterns.Structural.Composite;
 using PracticeProject.DesignPatterns.Structural.Decorator;
-using PracticeProject.DesignPatterns.Structural.Momento;
 
 namespace PracticeProject
 { 
@@ -294,32 +295,44 @@ namespace PracticeProject
 
             #region Strategy
 
-            Dictionary<string,IMathOperator> strategies=new Dictionary<string, IMathOperator>();
-            strategies.Add("+",new MathAdd());
-            //strategies.Add("-",new);
+           // Dictionary<string,IMathOperator> strategies=new Dictionary<string, IMathOperator>();
+           // strategies.Add("+",new MathAdd());
+           // //strategies.Add("-",new);
 
-            IMathOperator strategy= strategies["+"];
-           var result= strategy.Operation(2, 7);
-            Console.WriteLine(result);
+           // IMathOperator strategy= strategies["+"];
+           //var result= strategy.Operation(2, 7);
+           // Console.WriteLine(result);
             #endregion
 
             #region Momento
-            Editor editor=new Editor();
-            EditorHistory history=new EditorHistory();
+            //Editor editor=new Editor();
+            //EditorHistory history=new EditorHistory();
 
-            editor.Content = "a";
-            history.Push(editor.CreateState());
+            //editor.Content = "a";
+            //history.Push(editor.CreateState());
 
-            editor.Content = "b";
-            history.Push(editor.CreateState());
+            //editor.Content = "b";
+            //history.Push(editor.CreateState());
 
-            editor.Content = "c";
-            editor.RestoreState(history.Pop());
+            //editor.Content = "c";
+            //editor.RestoreState(history.Pop());
 
-            Console.WriteLine(editor.Content);
+            //Console.WriteLine(editor.Content);
 
             #endregion
-            }
+
+            #region State2
+            Canvas canvas=new Canvas();
+            canvas.CurrentTool=new SelectionTool();
+            canvas.MouseDown();
+            canvas.MouseUp();
+
+            canvas.CurrentTool=new BrushTool();
+            canvas.MouseDown();
+            canvas.MouseUp();
+
+            #endregion
+        }
 
             public static void ExecuteLinqOperators()
             {
