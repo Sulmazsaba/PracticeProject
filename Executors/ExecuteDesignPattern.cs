@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using PracticeProject.DesignPatterns.Behavioral.Iterator;
+using PracticeProject.DesignPatterns.Behavioral.Strategy2;
 
-namespace PracticeProject
+namespace PracticeProject.Executors
 {
    public static class ExecuteDesignPattern
     {
@@ -21,6 +20,13 @@ namespace PracticeProject
                 Console.WriteLine(url);
                 iterator.Next();
             }
+        }
+
+        public static void StrategyPattern2()
+        {
+            ImageStorage imageStorage=new ImageStorage();
+            imageStorage.Store("my file1",new JpegCompressor(), new BlackAndWhiteFilter());
+            imageStorage.Store("my file 1",new PngCompressor(), new BlackAndWhiteFilter());
         }
     }
 }

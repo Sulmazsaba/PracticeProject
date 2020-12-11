@@ -1,5 +1,6 @@
 ﻿using System;
 using PracticeProject.DesignPatterns.CreationalPatterns.Abstract;
+using PracticeProject.Executors;
 
 namespace PracticeProject
 { 
@@ -9,7 +10,7 @@ namespace PracticeProject
         {
 
             //Executor.ExecuteBehavioralPatterns();
-            ExecuteDesignPattern.IteratorPattern();
+            ExecuteDesignPattern.StrategyPattern2();
             //ExecuteLinqOperators();
 
            // CallAbstractFactory(new ConcreteFactory1());

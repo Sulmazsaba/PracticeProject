@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using PracticeProject.DesignPatterns.Behavioral.State2;
 using PracticeProject.DesignPatterns.CreationalPatterns.Abstract;
 using PracticeProject.DesignPatterns.CreationalPatterns.Builder2;
 using PracticeProject.DesignPatterns.Structural.Decorator;
 
-namespace PracticeProject
+namespace PracticeProject.Executors
 {
     public delegate void MyDelegate(string pm);
   public static  class Executor

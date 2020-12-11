@@ -11,10 +11,7 @@ namespace PracticeProject
 
       public int X
       {
-          get
-          {
-              return _x;
-          }
+          get => _x;
           set
           {
               _x = value;
@@ -24,10 +21,7 @@ namespace PracticeProject
 
       public int Y
       {
-          get
-          {
-              return _y;
-          }
+          get => _y;
           set
           {
               _y = value;

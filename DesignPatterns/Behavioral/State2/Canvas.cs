@@ -12,7 +12,7 @@ namespace PracticeProject.DesignPatterns.Behavioral.State2
        public void MouseDown()
        {
             CurrentTool.MouseDown();
-       }
+       }  
 
        public void MouseUp()
        {
