@@ -1,6 +1,7 @@
 ﻿using System;
 using PracticeProject.DesignPatterns.Behavioral.Iterator;
 using PracticeProject.DesignPatterns.Behavioral.Strategy2;
+using PracticeProject.DesignPatterns.Behavioral.TemplateMethod;
 
 namespace PracticeProject.Executors
 {
@@ -27,6 +28,12 @@ namespace PracticeProject.Executors
             ImageStorage imageStorage=new ImageStorage();
             imageStorage.Store("my file1",new JpegCompressor(), new BlackAndWhiteFilter());
             imageStorage.Store("my file 1",new PngCompressor(), new BlackAndWhiteFilter());
+        }
+
+        public static void TemplateMethod()
+        {
+            var task = new TransferMoneyTask();
+            task.Execute();
         }
     }
 }
