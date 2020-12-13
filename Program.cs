@@ -10,7 +10,7 @@ namespace PracticeProject
         {
 
             //Executor.ExecuteBehavioralPatterns();
-            ExecuteDesignPattern.TemplateMethod();
+            ExecuteDesignPattern.UndoableCommand();
             //ExecuteLinqOperators();
 
            // CallAbstractFactory(new ConcreteFactory1());

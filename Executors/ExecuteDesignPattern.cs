@@ -1,7 +1,11 @@
 ﻿using System;
+using PracticeProject.DesignPatterns.Behavioral.Command;
+using PracticeProject.DesignPatterns.Behavioral.Command.Composite;
+using PracticeProject.DesignPatterns.Behavioral.Command.Editor;
 using PracticeProject.DesignPatterns.Behavioral.Iterator;
 using PracticeProject.DesignPatterns.Behavioral.Strategy2;
 using PracticeProject.DesignPatterns.Behavioral.TemplateMethod;
+using ICommand = PracticeProject.DesignPatterns.Behavioral.Command.ICommand;
 
 namespace PracticeProject.Executors
 {
@@ -34,6 +38,39 @@ namespace PracticeProject.Executors
         {
             var task = new TransferMoneyTask();
             task.Execute();
+        }
+
+        public static void Command()
+        {
+            var customerService=new CustomerService();
+            ICommand command=new AddCustomerCommand(customerService);
+            var button=new Button(command);
+            button.Click();
+        }
+
+        public static void CompositeCommand()
+        {
+            var commands=new CompositeCommand();
+            commands.AddCommand(new ResizeCommand());
+            commands.AddCommand(new BlackAndWhiteCommand());
+
+            var button=new Button(commands);
+            button.Click();
+        }
+
+        public static void UndoableCommand()
+        {
+            var history=new History();
+            var document=new HtmlDocument();
+            document.Content = "Hello!";
+
+            var boldCommand=new BoldCommand(document,history);
+            boldCommand.Execute();
+            Console.WriteLine(document.Content);
+
+            var undoCommand=new UndoCommand(history);
+            undoCommand.Execute();
+            Console.WriteLine(document.Content);
         }
     }
 }
