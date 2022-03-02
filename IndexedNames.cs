@@ -5,10 +5,10 @@ using System.Text;
 
 namespace PracticeProject
 {
-   public class IndexedNames 
-   {
+    public class IndexedNames
+    {
         public static int ArraySize = 10;
-       public string[] NumList=new string[ArraySize];
+        public string[] NumList = new string[ArraySize];
 
         public IndexedNames()
         {
@@ -22,7 +22,7 @@ namespace PracticeProject
         {
             get
             {
-                string temp="";
+                string temp = "";
                 if (index >= 0 && index < ArraySize)
                     temp = NumList[index];
 
@@ -41,7 +41,7 @@ namespace PracticeProject
             get
             {
                 int indexNum = 0;
-                while (indexNum<ArraySize)
+                while (indexNum < ArraySize)
                 {
                     if (NumList[indexNum] == name)
                     {
@@ -49,12 +49,12 @@ namespace PracticeProject
                     }
                     indexNum++;
                 }
-                  
-                
+
+
 
                 return indexNum;
             }
         }
 
-   }
+    }
 }

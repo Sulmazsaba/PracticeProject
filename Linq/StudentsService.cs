@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PracticeProject
+namespace PracticeProject.Linq
 {
-   public static class StudentsService
+    public static class StudentsService
     {
         public static Student[] GetStudents()
         {
-            
-            Student[] studentArray=new Student[]
+
+            Student[] studentArray = new Student[]
             {
                 new Student()
                 {
@@ -30,7 +30,7 @@ namespace PracticeProject
                 new Student()
                 {
                     Id=5 , Name = "Halsey" , Age = 12, StandardId = 3
-                }, 
+                },
                 new Student()
                 {
                     Id = 6,Name = "Jack",Age = 34
@@ -38,7 +38,7 @@ namespace PracticeProject
                 new Student()
                 {
                     Id = 7,Name = "Joe",Age = 34
-                }, 
+                },
             };
 
             return studentArray;
@@ -57,12 +57,12 @@ namespace PracticeProject
                 {
                     Id = 2,
                     Name = "Standard 2"
-                }, 
+                },
                 new Standard()
                 {
                     Id = 3,
                     Name = "Standard 3"
-                }, 
+                },
             };
 
         }

@@ -1,68 +1,71 @@
 ﻿using System;
+using PracticeProject.CalculatorEvents;
 using PracticeProject.DesignPatterns.Behavioral.State2;
 using PracticeProject.DesignPatterns.CreationalPatterns.Abstract;
 using PracticeProject.DesignPatterns.CreationalPatterns.Builder2;
 using PracticeProject.DesignPatterns.Structural.Decorator;
+using PracticeProject.Events;
+using PracticeProject.Linq;
 
 namespace PracticeProject.Executors
 {
     public delegate void MyDelegate(string pm);
-  public static  class Executor
+    public static class Executor
     {
-        
+
         private static DateTime nwDateTime;
         //private IAbstractFactory _abstractFactory;
-         public static void fizzBuzz(int n)
+        public static void fizzBuzz(int n)
+        {
+            bool restFive = (n % 3 == 0);
+            bool restThree = (n % 5 == 0);
+            if (restFive && restThree)
             {
-                bool restFive = (n % 3 == 0);
-                bool restThree = (n % 5 == 0);
-                if (restFive && restThree)
-                {
-                    Console.Write("FizzBuzz");
-                }
-                else if (restThree)
-                {
-                    Console.Write("Fizz");
-                }
-                else if (restFive)
-                {
-                    Console.Write("Buzz");
-                }
-                else
-                {
-                    Console.Write(n);
-                }
-
+                Console.Write("FizzBuzz");
+            }
+            else if (restThree)
+            {
+                Console.Write("Fizz");
+            }
+            else if (restFive)
+            {
+                Console.Write("Buzz");
+            }
+            else
+            {
+                Console.Write(n);
             }
 
-            private static void SubscribeEvent2(object? sender, ProcessEventArg e)
-            {
-                Console.WriteLine("Process Completed. "+e.IsSuccessful + " " + e.CompilationDateTime);
-            }
+        }
 
-            private static void SubscribeEvent()
-            {
-                Console.WriteLine("Process Completed");
-            }
+        private static void SubscribeEvent2(object? sender, ProcessEventArg e)
+        {
+            Console.WriteLine("Process Completed. " + e.IsSuccessful + " " + e.CompilationDateTime);
+        }
+
+        private static void SubscribeEvent()
+        {
+            Console.WriteLine("Process Completed");
+        }
 
 
-            private static void DoSomething(int action)
+        private static void DoSomething(int action)
         {
             Console.WriteLine(action);
         }
 
-            public static void DelegateMethod1(string pm)
+        public static void DelegateMethod1(string pm)
         {
             Console.WriteLine(pm);
         }
 
-            public static bool PredicateSample(string pm)
-            {
-                return string.IsNullOrEmpty(pm);
-            }
+        public static bool PredicateSample(string pm)
+        {
+            return string.IsNullOrEmpty(pm);
+        }
 
-            public static void ExecuteCreationalPatterns()
-            {
+        public static void ExecuteCreationalPatterns()
+        {
             #region factory method
             //ProductFactory phoneFactory=new PhoneFactory();
             //IProduct phone = phoneFactory.GetFactory();
@@ -106,9 +109,9 @@ namespace PracticeProject.Executors
 
             #region Abstract
 
-            
-            var builder=new ConcreteBuilder();
-            Director director=new Director();
+
+            var builder = new ConcreteBuilder();
+            Director director = new Director();
             director.Builder = builder;
 
             director.buildMaximumFeature();
@@ -120,18 +123,18 @@ namespace PracticeProject.Executors
             #endregion
         }
 
-            public static void CallAbstractFactory(IAbstractFactory abstractFactory)
-            {
-                var productA = abstractFactory.CreateProductA();
-               Console.WriteLine(productA.UsefulFunctionA());
-               var productB = abstractFactory.CreateProductB();
-               Console.WriteLine(productB.UsefulFunctionB());
-               Console.WriteLine(productB.AnotherUsefulFunctionB(productA));
+        public static void CallAbstractFactory(IAbstractFactory abstractFactory)
+        {
+            var productA = abstractFactory.CreateProductA();
+            Console.WriteLine(productA.UsefulFunctionA());
+            var productB = abstractFactory.CreateProductB();
+            Console.WriteLine(productB.UsefulFunctionB());
+            Console.WriteLine(productB.AnotherUsefulFunctionB(productA));
 
-            }
+        }
 
-            public static void ExecuteStructuralPatterns()
-            {
+        public static void ExecuteStructuralPatterns()
+        {
             #region Adapter
 
             //ITarget target=new EmployeeAdapter();
@@ -164,19 +167,19 @@ namespace PracticeProject.Executors
             #endregion
 
             #region Decorator
-            Pizza pepperoni=new Pepperoni();
+            Pizza pepperoni = new Pepperoni();
             Console.WriteLine(pepperoni.GetDescription() + " Cost: " + pepperoni.GetCost());
-            
-            pepperoni=new Onion(pepperoni);
-            pepperoni=new Cheese(pepperoni);
+
+            pepperoni = new Onion(pepperoni);
+            pepperoni = new Cheese(pepperoni);
             Console.WriteLine(pepperoni.GetDescription() + " Cost: " + pepperoni.GetCost());
 
             #endregion
 
         }
 
-            public static void ExecuteBehavioralPatterns()
-            {
+        public static void ExecuteBehavioralPatterns()
+        {
             #region Observer
 
             //BlogReader sam = new BlogReader("sam");
@@ -195,13 +198,13 @@ namespace PracticeProject.Executors
 
             #region Strategy
 
-           // Dictionary<string,IMathOperator> strategies=new Dictionary<string, IMathOperator>();
-           // strategies.Add("+",new MathAdd());
-           // //strategies.Add("-",new);
+            // Dictionary<string,IMathOperator> strategies=new Dictionary<string, IMathOperator>();
+            // strategies.Add("+",new MathAdd());
+            // //strategies.Add("-",new);
 
-           // IMathOperator strategy= strategies["+"];
-           //var result= strategy.Operation(2, 7);
-           // Console.WriteLine(result);
+            // IMathOperator strategy= strategies["+"];
+            //var result= strategy.Operation(2, 7);
+            // Console.WriteLine(result);
             #endregion
 
             #region Momento
@@ -222,25 +225,25 @@ namespace PracticeProject.Executors
             #endregion
 
             #region State2
-            Canvas canvas=new Canvas();
-            canvas.CurrentTool=new SelectionTool();
+            Canvas canvas = new Canvas();
+            canvas.CurrentTool = new SelectionTool();
             canvas.MouseDown();
             canvas.MouseUp();
 
-            canvas.CurrentTool=new BrushTool();
+            canvas.CurrentTool = new BrushTool();
             canvas.MouseDown();
             canvas.MouseUp();
 
             #endregion
         }
 
-            public static void ExecuteLinqOperators()
-            {
-               LinqOperators.GroupJoin();
-            }
+        public static void ExecuteLinqOperators()
+        {
+            LinqOperators.GroupJoin();
+        }
 
-            public static void ExecuteIndexer()
-            {
+        public static void ExecuteIndexer()
+        {
 
             IndexedNames names = new IndexedNames();
             names[0] = "sulmaz";
@@ -259,16 +262,16 @@ namespace PracticeProject.Executors
             Console.WriteLine(indexNum);
         }
 
-            public static void CallCoordinate()
-            {
+        public static void CallCoordinate()
+        {
             Coordinate coordinate = new Coordinate();
             coordinate.CoordinatesChanged += DoSomething;
             coordinate.X = 10;
             coordinate.Y = 20;
         }
 
-            public static void SortedList()
-            {
+        public static void SortedList()
+        {
 
             Lists lists = new Lists();
             var list = lists.CreateStoredList();
@@ -278,15 +281,15 @@ namespace PracticeProject.Executors
             }
         }
 
-            public static void Delegate()
-            {
+        public static void Delegate()
+        {
 
             MyDelegate delegateMethod1 = DelegateMethod1;
             delegateMethod1.Invoke("salam man sulmazam");
         }
 
-            public static void Event()
-            {
+        public static void Event()
+        {
 
             ProcessBuildLogic processBuildLogic = new ProcessBuildLogic();
             processBuildLogic.ProcessCompleted += SubscribeEvent;
@@ -294,8 +297,8 @@ namespace PracticeProject.Executors
             processBuildLogic.StartNotify();
         }
 
-            public static void PredicateSample()
-            {
+        public static void PredicateSample()
+        {
 
             var i = "";
             Predicate<string> predicate = PredicateSample;
@@ -303,8 +306,8 @@ namespace PracticeProject.Executors
             Console.Write(result);
         }
 
-            public static void AbstractMethod()
-            {
+        public static void AbstractMethod()
+        {
 
             int[] numbers = new Int32[] { 1, 6, 4, 3, 3 };
             Calculator calculator = new EvenSumCalculator(numbers);

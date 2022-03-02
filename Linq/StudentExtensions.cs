@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PracticeProject
+namespace PracticeProject.Linq
 {
-   public static  class StudentExtensions
-   {
+    public static class StudentExtensions
+    {
         public delegate bool FindStudent(Student student);
-        public static Student[] Where(this Student[] students,FindStudent delFindStudent)
+        public static Student[] Where(this Student[] students, FindStudent delFindStudent)
         {
-            var result =new Student[10];
-            var i=0;
+            var result = new Student[10];
+            var i = 0;
             foreach (var student in students)
             {
                 if (delFindStudent(student))
